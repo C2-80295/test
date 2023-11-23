@@ -24,12 +24,7 @@ pipeline {
         }
         stage ('git clone/pull') {
             steps {
-                if (fileExists('test')) {
-                    sh 'cd test && git pull'
-                }
-                else {
-                    sh 'git clone https://c2-80295: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@github.com/C2-80295/test.git'
-                }
+                sh 'if [ -d "q2" ]; then cd q2 && git pull; else git clone "https://c2-80295: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@github.com/C2-80295/test.git"; fi'
             }
         }
     }
